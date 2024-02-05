@@ -4,6 +4,7 @@ import dotenv from 'dotenv' ;
 import morgan from 'morgan' ;
 import cors from 'cors' ;
 import cookieParser from 'cookie-parser' ;
+import bodyParser from 'body-parser';
 import DatabaseConnection from './src/config/mongodbConnection';
 dotenv.config() ;
 
@@ -19,6 +20,7 @@ const dbObject = new DatabaseConnection(process.env.mongodb_uri!) ;
 dbObject.dbConnect() ;
 app.use(cookieParser()) ;
 app.use(morgan('dev')) ;
+app.use(bodyParser.json()) ;
 app.use(express.json()) ;
 app.get("/",(req,res) => {
      res.json({message:'Application is running'}) ;
