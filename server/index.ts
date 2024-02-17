@@ -11,7 +11,7 @@ dotenv.config() ;
 
 const app = express() ;
 const server = http.createServer(app) ;
-const PORT_NO = process.env.port_no ;
+const PORT_NO = process.env.port_no  ;
 const corsOptions = {
     origin:"http://192.168.43.148:8081"
 }
@@ -22,7 +22,8 @@ app.use(cookieParser()) ;
 app.use(morgan('dev')) ;
 app.use(bodyParser.json()) ;
 app.use(express.json()) ;
-app.use("/v1/api",router()) ; 
+// app.use("/v1/api",router()) ; 
+app.use(router()) ;
 app.get("/",(req,res) => {
      res.json({message:'Application is running'}) ;
 })
