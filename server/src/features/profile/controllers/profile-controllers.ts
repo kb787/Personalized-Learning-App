@@ -1,11 +1,10 @@
 import TryCatch from "../../../helpers/tryCatch" ;
 import { UserProfileBody } from "../types/profile";
-import {Request} from "express" ;
+import {Request,Response,NextFunction} from "express" ;
 import { getUserProfileById,deleteUserProfileById,updateUserProfileById,createUserProfile} from "../methods/profile-methods"; 
 import { ObjectId } from "mongodb";
 
-
-export const userProfileCreationController = TryCatch(async(req : Request<{}, {} , UserProfileBody>,res,next) => {
+export const userProfileCreationController = TryCatch(async(req : Request<{}, {} , UserProfileBody>,res:Response,next:NextFunction) => {
      const {firstName,lastName,skillSets,skillSetsLevel,degreeName,degreeUniversity,degreeSpecialization} = req.body ;
      if((!firstName) || (!lastName) || (!skillSets) || (!skillSetsLevel) || (!degreeName) || (!degreeUniversity) || (!degreeSpecialization)){
           return res.json({message:'Entering all fields is mandatory',status:500}) ;
@@ -26,7 +25,7 @@ export const userProfileCreationController = TryCatch(async(req : Request<{}, {}
 
 }) 
 
-export const userProfileUpdationController = TryCatch(async(req:Request<{},{},UserProfileBody>,res,next) => {
+export const userProfileUpdationController = TryCatch(async(req:Request<{},{},UserProfileBody>,res:Response,next:NextFunction) => {
     const id = req.params ;
     const reqObject = updateUserProfileById(id as ObjectId) ;
     if(!reqObject){
@@ -36,7 +35,7 @@ export const userProfileUpdationController = TryCatch(async(req:Request<{},{},Us
 }
 )
 
-export const userProfileDeletionController = TryCatch(async(req:Request<{},{},UserProfileBody>,res,next) => {
+export const userProfileDeletionController = TryCatch(async(req:Request<{},{},UserProfileBody>,res:Response,next:NextFunction) => {
     const id = req.params ;
     const reqObject = deleteUserProfileById(id as ObjectId) ;
     if(!reqObject){
@@ -48,7 +47,7 @@ export const userProfileDeletionController = TryCatch(async(req:Request<{},{},Us
 }
 )
 
-export const userProfileRetreivalController = TryCatch(async(req:Request<{},{},UserProfileBody>,res,next) => {
+export const userProfileRetreivalController = TryCatch(async(req:Request<{},{},UserProfileBody>,res:Response,next:NextFunction) => {
     const id = req.params ;
     const reqObject = getUserProfileById(id as ObjectId) ;
     if(!reqObject){

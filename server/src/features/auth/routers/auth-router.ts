@@ -6,4 +6,4 @@ export default ():Router => {
     router.post('/reg-user',handleUserRegistration) ;
     router.post('/login-user',handleUserLogin) ;
     return router
-} 
+}  
