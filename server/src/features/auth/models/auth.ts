@@ -17,7 +17,6 @@ const userAuthSchema = new Schema(
         } ,
         sessionToken : {
              type:String ,
-             unique:true
         } ,
         profileId : {
              type:Schema.Types.ObjectId ,

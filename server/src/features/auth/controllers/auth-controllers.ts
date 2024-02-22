@@ -17,6 +17,7 @@ export const handleUserRegistration = TryCatch(
             const salt = await bcryptjs.genSalt(10) ;
             const hashedPassword = await bcryptjs.hash(password,salt) ;
             createUserAuth({userName,userEmail,userPassword:hashedPassword}) ;
+            connectDatabaseAndInsertData(userName,userEmail) ;
             return res.json({message:'User created successfully',status:201}) ;
         }
         else {
@@ -24,8 +25,6 @@ export const handleUserRegistration = TryCatch(
         }
     }
 )
-
-
 
 export const handleUserLogin = TryCatch(
     async(req:Request<{},{},AuthRequestBody>,res:Response,next:NextFunction) => {
