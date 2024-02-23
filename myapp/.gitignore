@@ -64,6 +64,3 @@ yarn-error.log
 
 # testing
 /coverage
-
-#config-keys
-.env
