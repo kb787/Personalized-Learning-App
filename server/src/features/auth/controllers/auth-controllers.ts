@@ -31,19 +31,17 @@ export const handleUserLogin = TryCatch(
         const {userEmail,userPassword} = req.body ;
         if((!userEmail) || (!userPassword) )
         {
-            return res.json({message:'Entering all fields is mandatory',status:400}) ;
+            return res.json({message:'Entering all fields is mandatory',status:409}) ;
         }
         else {
             const reqUser = await getUserAuthByEmail(userEmail) ;
             if(!reqUser){
-                 return res.json({message:'No account found',status:400}) ; 
+                 return res.json({message:'No account found',status:404}) ; 
             } 
-            const comparisonOutput = await bcryptjs.compare(userPassword,reqUser.userPassword as string) ;
-
-            if(comparisonOutput !== true){
+            const comparisonOutput = await bcryptjs.compare(userPassword,reqUser.userPassword!) ;
+            if(!comparisonOutput){
                 return res.json({message:'Invalid credentials',status:400}) ; 
             }
-            connectDatabaseAndInsertData(reqUser.userName as string,reqUser.userEmail as string) ;
             return res.json({message:'Login successfull',status:201}) ;
         }
     }

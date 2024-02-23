@@ -2,9 +2,15 @@ import { Types } from "mongoose" ;
 import { AuthRequestBody } from "../types/auth" ; 
 import userAuthModel, {userAuth} from "../models/auth" ;
 
+
 export const getUserAuthByEmail = async (email:string) => {
-    const requiredUser = await userAuthModel.findOne({email}) ;  
-    return requiredUser ;                                       
+    const requiredUser = await userAuthModel.findOne({email}) ; 
+    if(requiredUser === null){
+      return null ;
+    }
+    else { 
+     return requiredUser ;
+    }                                        
 }
 
 export const getUserAuthById = async (id:Types.ObjectId) => {
