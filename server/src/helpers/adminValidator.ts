@@ -11,10 +11,10 @@ export const handleAdminValidation = TryCatch(async(req:Request<{},{},AuthReques
      if((!userEmail) || (!userPassword)){
          return res.json({message:'Entering all fields is mandatory',status:409}) ;
      }
-     else if((userEmail !== adminEmail) || (userPassword !== adminPassword)){
-         return res.json({message:'Invalid credentials',status:404}) ;
+     else if((userEmail === adminEmail) && (userPassword === adminPassword)){
+        return res.json({message:'Login successfull',status:201})
      }
-     else {
-         return res.json({message:'Login successfull',status:201}) ; 
+    else {
+         return res.json({message:'Invalid credentials',status:401}) ; 
      }          
 })
