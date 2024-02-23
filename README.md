@@ -28,3 +28,7 @@ http://localhost:3500/course/update-prev-course/:id
 
 http://localhost:3500/course/delete-prev-course/:id
 
+Admin-Authentication :- 
+
+http://localhost:3500/admin/validate-admin
+
