@@ -13,7 +13,7 @@ const app = express() ;
 const server = http.createServer(app) ;
 const PORT_NO = process.env.port_no  ;
 const corsOptions = {
-    origin:"http://192.168.43.148:8081"
+    origin:"http://192.168.178.116:8081"
 }
 app.use(cors(corsOptions)) ;
 const dbObject = new DatabaseConnection(process.env.mongodb_uri!) ;
