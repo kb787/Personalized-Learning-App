@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { useState } from 'react'
 import {useNavigation} from '@react-navigation/native'
+import GoogleAuth from '../google-auth/GoogleAuth'
 import axios from 'axios'
  
 const AdminAuth = () => {
@@ -13,7 +14,7 @@ const AdminAuth = () => {
 
   const handleAdminAuthentication = async() => {
       try {
-         const loginResponse = await axios.post("http://192.168.43.148:3500/admin/validate-admin", {
+         const loginResponse = await axios.post("http://192.168.178.116:3500/admin/validate-admin", {
              userEmail:userEmail,
              userPassword:userPassword 
          }) 
@@ -46,6 +47,7 @@ const AdminAuth = () => {
             <TouchableOpacity style = {styles.textButtonOuterStyling} onPress={handleAdminAuthentication}>
                 <Text style = {styles.textButtonInnerStyling}>Login</Text>
             </TouchableOpacity>
+           {/* <GoogleAuth/> */}
             <Text style = {styles.bottomTextStyling}>
                Not an admin do the user registration
             </Text>
