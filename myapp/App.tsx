@@ -28,6 +28,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AdminAuth from './components/admin-auth/AdminAuth';
+import Homescreen from './components/home-page/Homescreen';
 
 const Stack = createStackNavigator() ;
 
@@ -70,7 +71,8 @@ function App(): React.JSX.Element {
 
   return (
       <NavigationContainer>
-          <Stack.Navigator initialRouteName='AdminAuth'>
+          <Stack.Navigator initialRouteName='Homescreen'>
+              <Stack.Screen name = 'Homescreen' component={Homescreen} />
               <Stack.Screen name = 'AdminAuth' component={AdminAuth} />
           </Stack.Navigator>
       </NavigationContainer>

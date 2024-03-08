@@ -47,10 +47,11 @@ const AdminAuth = () => {
             <TouchableOpacity style = {styles.textButtonOuterStyling} onPress={handleAdminAuthentication}>
                 <Text style = {styles.textButtonInnerStyling}>Login</Text>
             </TouchableOpacity>
-           {/* <GoogleAuth/> */}
+          {/* <GoogleAuth/>  */}
             <Text style = {styles.bottomTextStyling}>
                Not an admin do the user registration
             </Text>
+
         </View>
     </View>
   )
@@ -121,6 +122,4 @@ const styles = StyleSheet.create({
       textAlign:'center',
       marginTop:'7%'
     }    
-
-
 })

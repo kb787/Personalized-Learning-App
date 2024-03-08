@@ -1,6 +1,6 @@
 
 import { GoogleSignin,GoogleSigninButton,statusCodes } from '@react-native-google-signin/google-signin';
-import {google_auth_client_id} from '@env' ;
+import {google_auth_client_id} from '@env'
 
 const GoogleAuth = () => {
    GoogleSignin.configure({
