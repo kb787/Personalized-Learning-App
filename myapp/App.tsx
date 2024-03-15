@@ -25,12 +25,15 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import AdminAuth from './components/admin-auth/AdminAuth';
 import Homescreen from './components/home-page/Homescreen';
-
-const Stack = createStackNavigator() ;
+import ProfileCreation from './components/profile-component/ProfileCreation';
+import GoogleAuthOkta from './components/google-auth/GoogleAuthOkta';
+import {Auth0Provider} from 'react-native-auth0';
+import env from './env';
+const Stack = createStackNavigator();
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -70,12 +73,16 @@ function App(): React.JSX.Element {
   };
 
   return (
+    <Auth0Provider domain={env.app_domain_name} clientId={env.app_client_id}>
       <NavigationContainer>
-          <Stack.Navigator initialRouteName='Homescreen'>
-              <Stack.Screen name = 'Homescreen' component={Homescreen} />
-              <Stack.Screen name = 'AdminAuth' component={AdminAuth} />
-          </Stack.Navigator>
+        <Stack.Navigator initialRouteName="ProfileCreation">
+          <Stack.Screen name="Homescreen" component={Homescreen} />
+          <Stack.Screen name="AdminAuth" component={AdminAuth} />
+          <Stack.Screen name="ProfileCreation" component={ProfileCreation} />
+          <Stack.Screen name="GoogleAuthOkta" component={GoogleAuthOkta} />
+        </Stack.Navigator>
       </NavigationContainer>
+    </Auth0Provider>
   );
 }
 
